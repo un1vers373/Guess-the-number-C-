@@ -8,7 +8,6 @@ class ConsoleApp3
 {
     static void Main(string[] args)
     {
-
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
         bool playAgain = true;
@@ -20,11 +19,42 @@ class ConsoleApp3
         while (playAgain)
         {
             Random random = new Random();
-            int variable1 = random.Next(1, 101); 
+
+            Console.WriteLine("\nВыберите сложность:");
+            Console.WriteLine("1 — Лёгкая (1–50)");
+            Console.WriteLine("2 — Средняя (1–100)");
+            Console.WriteLine("3 — Сложная (1–500)");
+            Console.Write("Ваш выбор: ");
+
+            string difficulty = Console.ReadLine();
+
+            int maxNumber;
+
+            switch (difficulty)
+            {
+                case "1":
+                    maxNumber = 50;
+                    break;
+
+                case "2":
+                    maxNumber = 100;
+                    break;
+
+                case "3":
+                    maxNumber = 500;
+                    break;
+
+                default:
+                    maxNumber = 100;
+                    Console.WriteLine("Неверный выбор. Установлена средняя сложность.");
+                    break;
+            }
+
+            int variable1 = random.Next(1, maxNumber + 1);
             int variable2 = 0;
             bool variable3 = false;
 
-            Console.WriteLine("\nЧисло от 1 до 100, попробуй угадать его!");
+            Console.WriteLine($"\nЧисло от 1 до {maxNumber}, попробуй угадать его!");
 
             while (!variable3)
             {
@@ -33,7 +63,7 @@ class ConsoleApp3
 
                 if (!int.TryParse(input, out int variable4))
                 {
-                    Console.WriteLine("Пожалуйста, введите целое число!");
+                    Console.WriteLine("Введите целое число!");
                     continue;
                 }
 
@@ -41,16 +71,16 @@ class ConsoleApp3
 
                 if (variable4 < variable1)
                 {
-                    Console.WriteLine("Моё число больше! ");
+                    Console.WriteLine("Моё число больше!");
                 }
                 else if (variable4 > variable1)
                 {
-                    Console.WriteLine("Моё число меньше! ");
+                    Console.WriteLine("Моё число меньше!");
                 }
                 else
                 {
                     variable3 = true;
-                    Console.WriteLine($"\n Поздравляю! Ты угадал число {variable1} за {variable2} попыток!");
+                    Console.WriteLine($"\nХарош! Ты угадал число {variable1} за {variable2} попыток!");
                 }
             }
 
@@ -61,6 +91,13 @@ class ConsoleApp3
             {
                 playAgain = false;
                 Console.WriteLine("\nСпасибо за игру, давай связь!");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("=============");
+                Console.WriteLine("УГАДАЙ ЧИСЛО!");
+                Console.WriteLine("=============");
             }
         }
     }
