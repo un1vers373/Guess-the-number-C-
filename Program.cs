@@ -33,7 +33,7 @@ class ConsoleApp3
 
                 if (!int.TryParse(input, out int variable4))
                 {
-                    Console.WriteLine("Пожалуйста, введите целоке число!");
+                    Console.WriteLine("Пожалуйста, введите целое число!");
                     continue;
                 }
 
@@ -41,11 +41,11 @@ class ConsoleApp3
 
                 if (variable4 < variable1)
                 {
-                    Console.WriteLine("Мое число больше! ");
+                    Console.WriteLine("Моё число больше! ");
                 }
                 else if (variable4 > variable1)
                 {
-                    Console.WriteLine("Мое число меньше! ");
+                    Console.WriteLine("Моё число меньше! ");
                 }
                 else
                 {
